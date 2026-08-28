@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600&family=IBM+Plex+Mono:wght@500;600&display=swap");
+
+:root {
+  font-family: "DM Sans", sans-serif;
+  color: #f4f0e8;
+  background: #111313;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button { font: inherit; }
+#root { min-height: 100vh; }
+
+.calculator-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 32px 16px;
+  background: radial-gradient(circle at 50% 0%, rgba(203, 141, 55, 0.13), transparent 42%), #111313;
+}
+
+.calculator {
+  width: min(100%, 360px);
+  padding: 22px;
+  border: 1px solid #3b3d3a;
+  border-radius: 28px;
+  background: linear-gradient(155deg, #30322f, #1e201f 72%);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), inset 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.calculator-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 16px;
+  margin: 0 4px 14px;
+  color: #9b9d96;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+
+.status-light {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e89a47;
+  box-shadow: 0 0 9px rgba(232, 154, 71, 0.8);
+}
+
+.status-light.is-error { background: #df5d55; box-shadow: 0 0 9px rgba(223, 93, 85, 0.8); }
+
+.calculator-screen {
+  min-width: 0;
+  min-height: 112px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  margin-bottom: 18px;
+  padding: 14px 16px;
+  border: 1px solid rgba(31, 42, 26, 0.22);
+  border-radius: 14px;
+  background: linear-gradient(180deg, #c9d9b5, #aebe99);
+  color: #1f2a1a;
+  text-align: right;
+  box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.calculator-expression {
+  min-height: 19px;
+  overflow: hidden;
+  color: rgba(31, 42, 26, 0.62);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.calculator-display {
+  overflow: hidden;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: clamp(30px, 10vw, 40px);
+  font-weight: 600;
+  line-height: 1.18;
+  white-space: nowrap;
+}
+
+.calculator-keys {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.calculator-key {
+  min-width: 0;
+  height: 62px;
+  padding: 0;
+  border: 0;
+  border-radius: 15px;
+  color: #f5f1e9;
+  background: #3b3d3b;
+  box-shadow: 0 3px 0 #222422;
+  cursor: pointer;
+  font-size: 21px;
+  font-weight: 600;
+  transition: filter 100ms ease, transform 100ms ease, box-shadow 100ms ease;
+}
+
+.calculator-key:hover { filter: brightness(1.15); }
+.calculator-key:active { transform: translateY(3px); box-shadow: none; filter: brightness(0.92); }
+.calculator-key:focus-visible, .delete-button:focus-visible { outline: 2px solid #e89a47; outline-offset: 3px; }
+.key-function { background: #50524f; }
+.key-operator { color: #281806; background: #e89a47; box-shadow: 0 3px 0 #9d5d25; }
+.key-operator:hover { filter: brightness(1.08); }
+.key-zero { grid-column: span 2; }
+
+.delete-button {
+  display: block;
+  width: 100%;
+  margin-top: 14px;
+  padding: 4px 0;
+  border: 0;
+  color: #9b9d96;
+  background: transparent;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.delete-button span { margin-right: 5px; font-size: 16px; vertical-align: -1px; }
+
+@media (max-width: 420px) {
+  .calculator-page { padding: 20px 12px; }
+  .calculator { padding: 18px; border-radius: 24px; }
+  .calculator-key { height: 58px; }
+}
